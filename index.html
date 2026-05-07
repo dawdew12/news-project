@@ -1,0 +1,632 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>뉴스기사 요약 - 2026-05-07</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f6f7f9;
+      --surface: #ffffff;
+      --ink: #17202a;
+      --muted: #627082;
+      --line: #dfe4ea;
+      --accent: #0f766e;
+      --accent-soft: #e2f3ef;
+      --blue-soft: #e8f0fb;
+      --amber-soft: #fff1d6;
+      --shadow: 0 16px 36px rgba(23, 32, 42, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Segoe UI", "Noto Sans KR", AppleSDGothicNeo, sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.62;
+    }
+
+    a {
+      color: #0b5cad;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .page {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 36px 24px 56px;
+    }
+
+    header {
+      padding: 28px 0 22px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .eyebrow {
+      margin: 0 0 8px;
+      color: var(--accent);
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 34px;
+      line-height: 1.2;
+      letter-spacing: 0;
+    }
+
+    .lead {
+      max-width: 820px;
+      margin: 14px 0 0;
+      color: var(--muted);
+      font-size: 16px;
+    }
+
+    .nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 22px;
+    }
+
+    .nav a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 36px;
+      padding: 7px 13px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--surface);
+      color: var(--ink);
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .snapshot {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin: 24px 0 34px;
+    }
+
+    .metric {
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--surface);
+      box-shadow: 0 8px 20px rgba(23, 32, 42, 0.04);
+    }
+
+    .metric strong {
+      display: block;
+      font-size: 26px;
+      line-height: 1.1;
+    }
+
+    .metric span {
+      display: block;
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    section.category {
+      margin-top: 38px;
+    }
+
+    .category-head {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 18px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid var(--ink);
+    }
+
+    h2 {
+      margin: 0;
+      font-size: 26px;
+      letter-spacing: 0;
+    }
+
+    .category-head p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .issue {
+      margin-top: 22px;
+    }
+
+    h3 {
+      margin: 0 0 12px;
+      font-size: 18px;
+      letter-spacing: 0;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .card {
+      display: flex;
+      flex-direction: column;
+      min-height: 100%;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--surface);
+      box-shadow: var(--shadow);
+    }
+
+    .meta {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+
+    .source {
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: #0b5f58;
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .issue-tag {
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: var(--blue-soft);
+      color: #31537b;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .date-tag {
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: var(--amber-soft);
+      color: #7b5514;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .title-ko {
+      margin: 0 0 6px;
+      font-size: 18px;
+      line-height: 1.35;
+    }
+
+    .title-original {
+      margin: 0 0 12px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    ol {
+      margin: 0;
+      padding-left: 22px;
+    }
+
+    li {
+      margin: 5px 0;
+    }
+
+    .actions {
+      margin-top: auto;
+      padding-top: 14px;
+    }
+
+    .actions a {
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    .note {
+      margin-top: 34px;
+      padding: 16px 18px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--surface);
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    @media (max-width: 820px) {
+      .page {
+        padding: 24px 16px 42px;
+      }
+
+      h1 {
+        font-size: 28px;
+      }
+
+      .snapshot,
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .category-head {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header>
+      <p class="eyebrow">뉴스기사 요약</p>
+      <h1>2026-05-07 날짜별 기사 번역 및 3줄 요약</h1>
+      <p class="lead">
+        `뉴스기사/2026-05-07`에 저장된 링크를 기준으로 원문 제목을 한글화하고,
+        카테고리와 이슈별로 3줄 요약을 정리했습니다.
+      </p>
+      <nav class="nav" aria-label="카테고리 이동">
+        <a href="#ai">AI</a>
+        <a href="#economy">경제</a>
+        <a href="#industry">산업</a>
+      </nav>
+    </header>
+
+    <div class="snapshot">
+      <div class="metric">
+        <strong>3</strong>
+        <span>카테고리</span>
+      </div>
+      <div class="metric">
+        <strong>6</strong>
+        <span>이슈 묶음</span>
+      </div>
+      <div class="metric">
+        <strong>18</strong>
+        <span>기사 링크 요약</span>
+      </div>
+    </div>
+
+    <section id="ai" class="category">
+      <div class="category-head">
+        <h2>AI</h2>
+        <p>프런티어 모델 검증, AI 안보, 투자 확산</p>
+      </div>
+
+      <div class="issue">
+        <h3>AI 모델 검증·안보</h3>
+        <div class="grid">
+          <article class="card">
+            <div class="meta">
+              <span class="source">New York Times</span>
+              <span class="issue-tag">AI 안보</span>
+            </div>
+            <h4 class="title-ko">앤트로픽의 새 AI 모델, 전 세계에 경보를 울리다</h4>
+            <p class="title-original">Anthropic's New A.I. Model Sets Off Global Alarms</p>
+            <ol>
+              <li>앤트로픽의 Mythos 모델은 소프트웨어 취약점을 찾고 악용할 수 있는 능력 때문에 공개 범위가 제한됐다.</li>
+              <li>은행, 전력망, 정부 시스템 같은 핵심 인프라 보안에 영향을 줄 수 있어 각국 정부와 기업이 대응에 나섰다.</li>
+              <li>강력한 AI 모델 접근권이 기술 경쟁을 넘어 지정학적 협상 카드가 되고 있다는 점이 핵심이다.</li>
+            </ol>
+            <div class="actions"><a href="https://www.nytimes.com/2026/04/22/technology/anthropics-mythos-ai.html">원문 보기</a></div>
+          </article>
+
+          <article class="card">
+            <div class="meta">
+              <span class="source">Reuters</span>
+              <span class="issue-tag">사전 검증</span>
+            </div>
+            <h4 class="title-ko">마이크로소프트·구글·xAI, 미국 정부에 AI 모델 사전 접근 허용</h4>
+            <p class="title-original">Microsoft, Google and xAI to give US government early access to AI models for security checks</p>
+            <ol>
+              <li>세 회사는 배포 전 AI 모델을 미국 상무부 산하 기관이 시험할 수 있도록 합의했다.</li>
+              <li>검증 대상은 사이버 공격, 군사적 오용, 예기치 않은 모델 행동 등 국가안보 리스크다.</li>
+              <li>OpenAI와 앤트로픽 중심이던 정부 검증 체계가 빅테크 전반으로 확장되는 흐름이다.</li>
+            </ol>
+            <div class="actions"><a href="https://m.investing.com/news/stock-market-news/microsoft-xai-and-google-will-share-ai-models-with-us-govt-for-security-reviews-4658803?ampMode=1">원문 보기</a></div>
+          </article>
+
+          <article class="card">
+            <div class="meta">
+              <span class="source">Financial Times</span>
+              <span class="issue-tag">정부 접근</span>
+            </div>
+            <h4 class="title-ko">앤트로픽, 미국 정부에 Mythos 모델 접근권 제공 논의</h4>
+            <p class="title-original">Anthropic in talks to give US government access to its Mythos model</p>
+            <ol>
+              <li>미국 정부는 고급 취약점 탐지 능력을 가진 Mythos를 공공 사이버 방어에 활용하는 방안을 검토하고 있다.</li>
+              <li>모델 오용을 막기 위해 수정 버전, 접근 통제, 사용 범위 제한 같은 안전장치가 핵심 쟁점이다.</li>
+              <li>국방부와의 갈등에도 민간·연방기관 차원의 활용 논의가 이어지며 AI 공급망 리스크가 부각된다.</li>
+            </ol>
+            <div class="actions"><a href="https://www.ft.com/content/c9f5b690-a10e-4c66-9245-017f8bfbc7b4">원문 보기</a></div>
+          </article>
+
+          <article class="card">
+            <div class="meta">
+              <span class="source">The Washington Post</span>
+              <span class="issue-tag">규제 전환</span>
+            </div>
+            <h4 class="title-ko">미 연방기관, 구글·마이크로소프트 AI 모델을 출시 전 테스트</h4>
+            <p class="title-original">Federal officials will test Google and Microsoft AI models before release</p>
+            <ol>
+              <li>상무부와 NIST 산하 센터가 구글, 마이크로소프트, xAI의 새 모델을 출시 전 평가한다.</li>
+              <li>합의는 강제 기준을 세우는 방식은 아니지만, 실리콘밸리에 대한 감독 강화 신호로 해석된다.</li>
+              <li>Mythos 논란 이후 프런티어 AI의 해킹·안보 능력을 정부가 직접 파악하려는 움직임이 커졌다.</li>
+            </ol>
+            <div class="actions"><a href="https://www.washingtonpost.com/technology/2026/05/05/google-microsoft-xai-ai-review/">원문 보기</a></div>
+          </article>
+        </div>
+      </div>
+
+      <div class="issue">
+        <h3>AI 투자·시장 확산</h3>
+        <div class="grid">
+          <article class="card">
+            <div class="meta">
+              <span class="source">The Wall Street Journal</span>
+              <span class="issue-tag">AI 밸류체인</span>
+              <span class="date-tag">2026-05-07</span>
+            </div>
+            <h4 class="title-ko">AI 열풍의 새로운 수혜주는 의외의 곳에서 나온다</h4>
+            <p class="title-original">The Latest Winners in the AI Craze Might Surprise You</p>
+            <ol>
+              <li>투자자 관심이 대형 칩 제조사뿐 아니라 AI 인프라를 떠받치는 부품·소재·장비 기업으로 넓어지고 있다.</li>
+              <li>데이터센터와 AI 시스템 구축에 필요한 공급망 기업들이 시장에서 새 수혜주로 부각된다.</li>
+              <li>AI 투자가 소수 빅테크 주가를 넘어 산업 전반의 가치사슬로 확산되는 흐름을 보여준다.</li>
+            </ol>
+            <div class="actions"><a href="https://www.wsj.com/livecoverage/stock-market-today-dow-sp-500-nasdaq-05-07-2026/card/the-latest-winners-in-the-ai-craze-might-surprise-you-C3WbZ8Skr2QOKmrpL8Oq">원문 보기</a></div>
+          </article>
+
+          <article class="card">
+            <div class="meta">
+              <span class="source">연합뉴스</span>
+              <span class="issue-tag">미중 AI 안전</span>
+              <span class="date-tag">2026-05-07</span>
+            </div>
+            <h4 class="title-ko">미중, AI 경쟁 위기 차단을 위한 안전장치 논의 추진</h4>
+            <p class="title-original">"미중, AI 경쟁 위기 차단 위한 안전장치 논의 추진"</p>
+            <ol>
+              <li>미국과 중국은 AI 경쟁이 통제 불능으로 번지는 것을 막기 위한 공식 대화채널을 검토하고 있다.</li>
+              <li>논의 대상은 모델 오작동, 자율 무기, 오픈소스 AI 악용 등 전략적 위험을 다루는 정례 협의체다.</li>
+              <li>대화 자체에는 긍정 신호가 있지만, 과거 핫라인이 제대로 작동하지 않았다는 회의론도 남아 있다.</li>
+            </ol>
+            <div class="actions"><a href="https://www.yna.co.kr/view/AKR20260507130800009">원문 보기</a></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="economy" class="category">
+      <div class="category-head">
+        <h2>경제</h2>
+        <p>AI 투자, 성장률, 물가와 금리</p>
+      </div>
+
+      <div class="issue">
+        <h3>AI 투자와 성장</h3>
+        <div class="grid">
+          <article class="card">
+            <div class="meta">
+              <span class="source">New York Times</span>
+              <span class="issue-tag">IPO</span>
+            </div>
+            <h4 class="title-ko">2026년은 초대형 IPO의 해가 될 수 있다</h4>
+            <p class="title-original">2026 May Be the Year of the Mega I.P.O.</p>
+            <ol>
+              <li>OpenAI, Anthropic, SpaceX가 상장을 준비하면 AI 붐이 공모시장으로 본격 이동할 수 있다.</li>
+              <li>상장은 실리콘밸리와 월가에 대규모 현금 유입을 만들지만, 기업의 실제 수익성과 비용 구조도 드러낸다.</li>
+              <li>AI 기업들이 데이터센터와 컴퓨팅 비용을 감당하려면 공개시장의 자본이 더 중요해지는 국면이다.</li>
+            </ol>
+            <div class="actions"><a href="https://www.nytimes.com/2026/01/14/technology/ai-ipo-openai-anthropic-spacex.html">원문 보기</a></div>
+          </article>
+
+          <article class="card">
+            <div class="meta">
+              <span class="source">Reuters</span>
+              <span class="issue-tag">설비투자</span>
+            </div>
+            <h4 class="title-ko">빅테크, 2026년 AI에 약 6천500억 달러 투자 전망</h4>
+            <p class="title-original">Big Tech to invest about $650 billion in AI in 2026, Bridgewater says</p>
+            <ol>
+              <li>브리지워터는 알파벳, 아마존, 메타, 마이크로소프트의 AI 인프라 투자가 올해 약 6천500억 달러에 이를 것으로 봤다.</li>
+              <li>투자 규모는 2025년 4천100억 달러에서 크게 늘며 미국 성장률을 떠받치는 요인으로 평가된다.</li>
+              <li>다만 외부 자본 의존, 전력요금 상승, 장비 가격 인플레이션은 AI 투자 붐의 하방 리스크다.</li>
+            </ol>
+            <div class="actions"><a href="https://www.investing.com/news/stock-market-news/big-tech-to-invest-about-650-billion-in-ai-in-2026-bridgewater-says-4519448">원문 보기</a></div>
+          </article>
+
+          <article class="card">
+            <div class="meta">
+              <span class="source">Financial Times</span>
+              <span class="issue-tag">생산성</span>
+            </div>
+            <h4 class="title-ko">경제학자들, AI 붐이 미국 생산성 우위를 연장할 것으로 전망</h4>
+            <p class="title-original">US to extend productivity lead on back of AI boom, say economists</p>
+            <ol>
+              <li>AI 투자는 미국 기업의 자동화, 소프트웨어 활용, 데이터센터 확장을 통해 생산성 개선 기대를 키운다.</li>
+              <li>생산성 우위가 이어지면 미국 경제는 다른 선진국보다 더 높은 성장 여력을 확보할 수 있다.</li>
+              <li>다만 AI 혜택이 넓게 확산되는지, 특정 기업과 산업에만 집중되는지가 지속성을 가를 변수다.</li>
+            </ol>
+            <div class="actions"><a href="https://www.ft.com/content/1af296f4-32af-4ec2-9d40-cd3c1c744a89">원문 보기</a></div>
+          </article>
+
+          <article class="card">
+            <div class="meta">
+              <span class="source">The Washington Post</span>
+              <span class="issue-tag">성장·물가</span>
+            </div>
+            <h4 class="title-ko">2026년 초 미국 경제는 성장했지만 물가도 뛰었다</h4>
+            <p class="title-original">Economy picked up in early 2026, but inflation jumped, too</p>
+            <ol>
+              <li>미국 1분기 GDP는 연율 2% 성장했지만, PCE 물가는 전년 대비 3.5% 오르며 인플레이션 우려를 키웠다.</li>
+              <li>AI 관련 장비와 소프트웨어 투자가 성장의 밝은 축으로 작용했지만 소비자는 가격 부담을 느끼고 있다.</li>
+              <li>연준은 물가가 목표치를 웃도는 상황에서 기준금리를 동결했고, 경기 기반이 좁아졌다는 평가도 나왔다.</li>
+            </ol>
+            <div class="actions"><a href="https://www.washingtonpost.com/business/2026/04/30/economy-gdp-growth-first-quarter/">원문 보기</a></div>
+          </article>
+
+          <article class="card">
+            <div class="meta">
+              <span class="source">연합뉴스</span>
+              <span class="issue-tag">한국 AI 반도체</span>
+            </div>
+            <h4 class="title-ko">정부, 'K-엔비디아'에 50조 원 투입해 AI 반도체 유니콘 육성</h4>
+            <p class="title-original">'K-엔비디아'에 50조 투입...AI 반도체 유니콘 5곳 육성(종합)</p>
+            <ol>
+              <li>정부는 국산 AI 반도체 육성을 위해 5년간 50조 원 규모의 금융 지원을 추진한다.</li>
+              <li>리벨리온, 퓨리오사AI, 하이퍼엑셀, 딥엑스, 모빌린트 등 국내 AI 반도체 기업이 주요 지원 대상이다.</li>
+              <li>NPU 중심 생태계를 키워 GPU 의존도를 낮추고 글로벌 경쟁력을 갖춘 유니콘을 만들겠다는 전략이다.</li>
+            </ol>
+            <div class="actions"><a href="https://www.yna.co.kr/view/AKR20260317113551017">원문 보기</a></div>
+          </article>
+        </div>
+      </div>
+
+      <div class="issue">
+        <h3>금리·물가</h3>
+        <div class="grid">
+          <article class="card">
+            <div class="meta">
+              <span class="source">The Wall Street Journal</span>
+              <span class="issue-tag">채권시장</span>
+            </div>
+            <h4 class="title-ko">미 국채 매도세 3주째, 30년물 금리 5% 돌파</h4>
+            <p class="title-original">Treasurys Selloff Enters Third Week, 30-Year Yield Tops 5%</p>
+            <ol>
+              <li>미 국채 수익률이 상승세를 이어가며 30년물 금리가 5%를 넘어섰다.</li>
+              <li>재정 부담, 인플레이션 우려, 지정학적 긴장이 장기채 매도세를 자극한 것으로 해석된다.</li>
+              <li>금리 상승은 주식 밸류에이션과 기업 자금조달 비용에 부담을 주는 변수로 남는다.</li>
+            </ol>
+            <div class="actions"><a href="https://www.wsj.com/articles/treasury-yields-rise-as-inflation-concerns-persist-da72f074">원문 보기</a></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="industry" class="category">
+      <div class="category-head">
+        <h2>산업</h2>
+        <p>AI 인프라, 반도체, 제조 혁신</p>
+      </div>
+
+      <div class="issue">
+        <h3>AI 인프라·반도체</h3>
+        <div class="grid">
+          <article class="card">
+            <div class="meta">
+              <span class="source">New York Times</span>
+              <span class="issue-tag">전력 비용</span>
+            </div>
+            <h4 class="title-ko">트럼프 AI 계획의 새 목표: 빅테크가 전기요금을 올리지 못하게 하기</h4>
+            <p class="title-original">Trump A.I. Plan Has a New Goal: Stop Big Tech From Raising Your Electricity Bills</p>
+            <ol>
+              <li>AI 데이터센터 확장이 지역 전력망과 가계 전기요금에 부담을 줄 수 있다는 우려가 커지고 있다.</li>
+              <li>트럼프 행정부는 빅테크가 데이터센터 전력 비용을 스스로 부담하도록 압박하는 방향을 강조한다.</li>
+              <li>전력 확보와 지역 수용성이 AI 산업 성장의 핵심 병목으로 떠오르고 있다.</li>
+            </ol>
+            <div class="actions"><a href="https://www.nytimes.com/2026/01/16/business/trump-ai-electricity-costs.html">원문 보기</a></div>
+          </article>
+
+          <article class="card">
+            <div class="meta">
+              <span class="source">Reuters</span>
+              <span class="issue-tag">AI 칩 공장</span>
+            </div>
+            <h4 class="title-ko">일론 머스크, Terafab AI 칩 프로젝트 구상 공개</h4>
+            <p class="title-original">Elon Musk lays out Terafab AI chip project plan</p>
+            <ol>
+              <li>SpaceX는 텍사스 반도체 제조시설에 초기 550억 달러 투자를 제안했고, 추가 단계가 진행되면 규모가 더 커질 수 있다.</li>
+              <li>Tesla, SpaceX, xAI가 자동차·휴머노이드·우주 데이터센터용 AI 칩 생산을 목표로 한 대형 팹을 구상한다.</li>
+              <li>Intel 14A 공정 활용, 장비 조달, 운영 주체와 일정 등은 아직 확정되지 않은 주요 변수다.</li>
+            </ol>
+            <div class="actions"><a href="https://www.tradingview.com/news/reuters.com%2C2026%3Anewsml_L6N41J0MZ%3A0-elon-musk-lays-out-terafab-ai-chip-project-plan/">원문 보기</a></div>
+          </article>
+
+          <article class="card">
+            <div class="meta">
+              <span class="source">Financial Times</span>
+              <span class="issue-tag">데이터센터</span>
+            </div>
+            <h4 class="title-ko">2026년 예정 미국 데이터센터의 약 40%, 지연 직면</h4>
+            <p class="title-original">SynMax: almost 40% of US data centers due in 2026 are facing delays</p>
+            <ol>
+              <li>SynMax 분석에 따르면 2026년 가동 예정인 미국 데이터센터 상당수가 일정 지연을 겪고 있다.</li>
+              <li>Microsoft, OpenAI 등 대형 프로젝트도 3개월 이상 늦어질 가능성이 제기됐다.</li>
+              <li>전력, 부지, 장비, 건설 병목은 AI 서비스 확장 속도를 제한할 수 있는 산업 리스크다.</li>
+            </ol>
+            <div class="actions"><a href="https://www.ft.com/content/f2bae708-f5c3-49b0-99c0-e4a11552427b">원문 보기</a></div>
+          </article>
+
+          <article class="card">
+            <div class="meta">
+              <span class="source">연합뉴스</span>
+              <span class="issue-tag">패키징 장비</span>
+            </div>
+            <h4 class="title-ko">한미반도체, 세미콘 동남아에서 새 TC 본더 소개</h4>
+            <p class="title-original">한미반도체, 세미콘 동남아 전시회 참가...새 'TC 본더' 소개</p>
+            <ol>
+              <li>한미반도체는 쿠알라룸푸르에서 열리는 2026 세미콘 동남아시아에 참가해 신제품을 선보인다.</li>
+              <li>2.5D TC 본더 40·120은 GPU, CPU, HBM 등을 하나의 패키지로 통합하는 장비다.</li>
+              <li>회사는 HBM용 본더를 넘어 고부가 AI 반도체 패키징 시장으로 영역을 넓히려 한다.</li>
+            </ol>
+            <div class="actions"><a href="https://www.yna.co.kr/view/AKR20260504047400003">원문 보기</a></div>
+          </article>
+        </div>
+      </div>
+
+      <div class="issue">
+        <h3>제조·방산·자동차</h3>
+        <div class="grid">
+          <article class="card">
+            <div class="meta">
+              <span class="source">The Wall Street Journal</span>
+              <span class="issue-tag">전기차 제조</span>
+            </div>
+            <h4 class="title-ko">포드의 비밀팀, 3만 달러 전기 픽업을 위해 조립라인을 뒤엎다</h4>
+            <p class="title-original">The Secret Team Blowing Up Ford's Assembly Line to Make a $30,000 Electric Truck</p>
+            <ol>
+              <li>포드는 중국 전기차와 경쟁하기 위해 2027년 출시를 목표로 3만 달러대 전기 픽업을 개발하고 있다.</li>
+              <li>테슬라와 애플 출신 인재가 참여한 비밀팀은 부품 수와 배선을 줄이고 새로운 조립 방식을 시험했다.</li>
+              <li>전기차 수요 둔화와 보조금 축소 속에서도 제조 원가 혁신이 포드의 미래 경쟁력을 좌우할 전망이다.</li>
+            </ol>
+            <div class="actions"><a href="https://www.wsj.com/business/autos/ford-ev-electric-truck-7fdb0e0a">원문 보기</a></div>
+          </article>
+
+          <article class="card">
+            <div class="meta">
+              <span class="source">The Washington Post</span>
+              <span class="issue-tag">방산 제조</span>
+            </div>
+            <h4 class="title-ko">미국 군수 산업 기반을 재가동하는 스타트업들</h4>
+            <p class="title-original">The start-ups leading the race to reboot America's military industrial base</p>
+            <ol>
+              <li>Gecko Robotics 같은 스타트업은 로봇으로 선박, 잠수함, 미사일 사일로 등 노후 군사자산을 검사한다.</li>
+              <li>로봇과 소프트웨어 기반 제조는 느리고 비싼 전통 방산 생산 방식을 바꿀 대안으로 부상한다.</li>
+              <li>미국은 중국의 산업 로봇 도입 속도를 따라잡아야 하며, 방산 혁신이 제조업 전반으로 확산될 수 있다.</li>
+            </ol>
+            <div class="actions"><a href="https://www.washingtonpost.com/opinions/2026/05/07/us-robotics-firm-tech-innovators-modernize-manufacturing-defense/">원문 보기</a></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <p class="note">
+      참고: 일부 매체는 구독 장벽이 있어 공개 기사 메타정보와 검색 결과에서 확인 가능한 내용도 함께 활용했습니다.
+      모든 카드는 원문 링크를 유지해 후속 확인이 가능하도록 구성했습니다.
+    </p>
+  </main>
+</body>
+</html>
